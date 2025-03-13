@@ -26,7 +26,7 @@ Tareas específicas:
 
 function agregarAmigo() 
 {
-    let entradaUsuario = document.getElementById('amigo').value.toUpperCase();
+    let entradaUsuario = document.getElementById('amigo').value.toUpperCase(); //convierte el valor a mayusculas
     
     if (entradaUsuario == '')
     {
@@ -37,13 +37,18 @@ function agregarAmigo()
     }
 
     limpiarImput();
-    console.log(amigos);
+    //console.log(amigos);
     generarListaHTML();
 }
 
 function limpiarImput() 
 {
     document.getElementById('amigo').value = '';
+}
+
+function primeraLetraMayuscula(texto)
+{
+    return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 }
 
 /*
@@ -100,9 +105,9 @@ function sortearAmigo()
         alert("No existe ningun amigo en la lista");
     }else
     {
-        console.log(amigos.length);
+        //console.log(amigos.length);
         let ganador = Math.floor(Math.random()*amigos.length);
-        console.log(ganador);
-        document.querySelector("h2").innerHTML = `Tu amigo(a) secreto es ${amigos[ganador]}`
+        //console.log(ganador);
+        document.querySelector("h2").innerHTML = `Tu amigo(a) secreto es ${primeraLetraMayuscula(amigos[ganador])}`
     }
 }
