@@ -31,7 +31,8 @@ function agregarAmigo()
     if (entradaUsuario == '')
     {
         alert("Por, favor inserte un nombre.");
-    }else{
+    }else
+    {
         amigos.push(entradaUsuario);
     }
 
@@ -72,6 +73,36 @@ function generarListaHTML()
         let elementoLista = document.createElement('li'); //se crea un elemento li, en cada iteracion
         elementoLista.textContent = amigos[contador]; //se asigna al elemento creado un elemento del arreglo
         listaHTML.appendChild(elementoLista); // se agrega en el HTML el elemento li antes creado
-        contador++
+        contador++;
+    }
+}
+
+/*
+Descripción
+
+Escribe una función que seleccione de manera aleatoria uno de los nombres almacenados en el array amigos. Usa Math.random() y Math.floor() para obtener un índice aleatorio.
+
+Tareas específicas:
+
+    Validar que haya amigos disponibles: Antes de sortear, comprobar si el array amigos no está vacío.
+
+    Generar un índice aleatorio: Usar Math.random() y Math.floor() para seleccionar un índice aleatorio del arreglo.
+
+    Obtener el nombre sorteado: Utilizar el índice aleatorio para acceder al nombre correspondiente en el arreglo.
+
+    Mostrar el resultado: Actualizar el contenido del elemento de resultado utilizando document.getElementById()  e innerHTML para mostrar el amigo sorteado.
+*/
+
+function sortearAmigo()
+{
+    if (amigos == '')
+    {
+        alert("No existe ningun amigo en la lista");
+    }else
+    {
+        console.log(amigos.length);
+        let ganador = Math.floor(Math.random()*amigos.length);
+        console.log(ganador);
+        document.querySelector("h2").innerHTML = `Tu amigo(a) secreto es ${amigos[ganador]}`
     }
 }
