@@ -30,7 +30,11 @@ function agregarAmigo()
     
     if (entradaUsuario == '')
     {
-        alert("Por, favor inserte un nombre.");
+        Swal.fire({
+            icon: "error",
+            title: "¡Error!",
+            text: "Por favor escriba un nombre."
+          });
     }else
     {
         amigos.push(entradaUsuario);
@@ -102,12 +106,26 @@ function sortearAmigo()
 {
     if (amigos == '')
     {
-        alert("No existe ningun amigo en la lista");
+        Swal.fire({
+            icon: "error",
+            title: "¡Error!",
+            text: "No existe ningún amigo en la lista para sortear."
+          });
     }else
     {
         //console.log(amigos.length);
         let ganador = Math.floor(Math.random()*amigos.length);
         //console.log(ganador);
-        document.querySelector("h2").innerHTML = `Tu amigo(a) secreto es ${primeraLetraMayuscula(amigos[ganador])}`
+        
+        //document.querySelector("h2").innerHTML = `Tu amiga o amigo secreto es ${primeraLetraMayuscula(amigos[ganador])}`
+
+        Swal.fire({
+            title: `${amigos[ganador]}`,
+            text: "Es tu amiga o amigo secreto.",
+            icon: "question"
+          });
+                
+        amigos.splice(ganador, 1); // se elimina el elmento seleccionado del arreglo
+        generarListaHTML(); //se llama a la funcion para volver a generar la lista actualizada en el html
     }
 }
